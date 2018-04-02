@@ -27,7 +27,7 @@ module Api
 			# Update last location
 			def update
 				citizen = Citizen.find(params[:id])
-				if citizen.update_attributes(citizen_update_params)
+				if !citizen.mutant and citizen.update_attributes(citizen_update_params)
 					render json: {status: 'SUCCESS', message:'Updated citizen', data:citizen}, status: :ok
 				else
 					render json: {status: 'ERROR', message:'Citizen not updated', data:citizen.erros}, status: :unprocessable_entity
