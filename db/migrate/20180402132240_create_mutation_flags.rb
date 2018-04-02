@@ -3,6 +3,8 @@ class CreateMutationFlags < ActiveRecord::Migration[5.2]
     create_table :mutation_flags do |t|
       t.integer :flag
       t.string :mutation
+      
+      t.references :citizen, foreign_key: true
 
       t.timestamps
     end

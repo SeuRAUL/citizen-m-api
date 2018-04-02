@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2018_04_02_132240) do
   create_table "mutation_flags", force: :cascade do |t|
     t.integer "flag"
     t.string "mutation"
+    t.integer "citizen_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["citizen_id"], name: "index_mutation_flags_on_citizen_id"
   end
 
 end

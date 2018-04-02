@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   
   namespace 'api' do
   	namespace 'v1' do
-  		resources :citizens
+  		resources :citizens do
+  		  resources :mutantion_flags
+  		end
   	end
   end
 end
