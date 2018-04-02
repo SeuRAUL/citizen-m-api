@@ -5,14 +5,12 @@ module Api
             # List all citizens
             def index
                citizens = Citizen.order('created_at DESC');
-               render json: {status: 'SUCCESS', message:'Citizens loaded', data:citizens}, status: :ok
+               render json: citizens, include: ['mutation_flags']
             end
             
             # List citizen by ID
 			def show
 				citizen = Citizen.find(params[:id])
-				# mutantion_flags = citizen.mutant_flags;
-				# render json: {status: 'SUCCESS', message:'Loaded citizen', data: [citizen, mutant_flags]}, status: :ok
 				render json: citizen, include: ['mutation_flags']
 			end
 			
@@ -30,7 +28,6 @@ module Api
 			def update
 				citizen = Citizen.find(params[:id])
 				if !citizen.mutant and citizen.update_attributes(citizen_params)
-					# citizen.mutantion_flags.update_attributes(params[:mutantion_flags_attributes])
 					render json: {status: 'SUCCESS', message:'Updated citizen', data:citizen}, status: :ok
 				else
 					render json: {status: 'ERROR', message:'Citizen not updated', data:citizen.erros}, status: :unprocessable_entity
