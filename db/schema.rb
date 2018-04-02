@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_02_111713) do
+ActiveRecord::Schema.define(version: 2018_04_02_132240) do
 
   create_table "citizens", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2018_04_02_111713) do
     t.string "gender"
     t.string "lastLocation"
     t.boolean "mutant", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mutation_flags", force: :cascade do |t|
+    t.integer "flag"
+    t.string "mutation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -37,7 +37,7 @@ module Api
 			# Permited Params
 			private
 			def citizen_params
-				params.permit(:name, :age, :gender, :lastLocation)
+				params.require(:data).require(:attributes).permit(:name, :age, :gender, :lastLocation, mutant_flag_attributes: [:id, :flag, :mutation])
 			end
 			
 			def citizen_update_params
